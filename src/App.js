@@ -7,7 +7,7 @@ import userlogin from "./User/userlogin";
 import Home from "./User/Home"
 import NotFound from "./User/NotFound";
 import AppHeader from "./User/AppHeader";
-const { Header, Footer, Content } = Layout;
+const { Header, Content } = Layout;
 
 
 const App = () =>{
