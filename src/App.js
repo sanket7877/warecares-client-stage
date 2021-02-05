@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+import './App.css';
+import {Layout} from "antd";
+import {Switch,Route,withRouter} from "react-router-dom";
+import userlogin from "./User/userlogin";
+import Home from "./User/Home"
+import NotFound from "./User/NotFound";
+import AppHeader from "./User/AppHeader";
+const { Header, Footer, Content } = Layout;
+
+
+const App = () =>{
+
+    return (
+<>
+    <Layout>
+        <Header><AppHeader/></Header>
+
+        <Content>
+     <Switch>
+         <Route exact path="/" component={userlogin}/>
+         <Route exact path="/home"> <Home/> </Route>
+
+         <Route path="*"><NotFound/></Route>
+
+     </Switch>
+        </Content>
+    </Layout>
+</>
+
   );
 }
 
-export default App;
+
+
+export default withRouter(App);;
