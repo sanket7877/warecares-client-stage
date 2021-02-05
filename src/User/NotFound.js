@@ -1,5 +1,6 @@
 import React from 'react';
 import {Button} from "antd";
+import { DownloadOutlined } from '@ant-design/icons';
 
 class NotFound extends React.Component{
     render(){
@@ -7,7 +8,7 @@ class NotFound extends React.Component{
 
             <div>
             <h1> 404 ! Page is not Found</h1>
-                <Button path="/">Go Back </Button>
+                <Button  shape="round" type="primary"  icon={<DownloadOutlined />}>Go Back </Button>
             </div>
         );
     }
