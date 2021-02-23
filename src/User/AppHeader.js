@@ -1,12 +1,30 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import {useState} from "react/cjs/react.production.min";
 
 
+
+function Doctor(){
+
+    const [doctor,setDoctor]=useState(null);
+    useState(()=>{
+
+
+        fetch('http://localhost:8080/api/doctor/showdoctor')
+            .then(response => response.json())
+            .then(data => console.log(data));
+
+    })
+}
 const AppHeader=({title})=>
 {
+
     return(
     <header>
-        <h1 style={headingStyle}>{title}</h1>
+
+    <div>
+
+    </div>
 
     </header>
     );
@@ -21,7 +39,7 @@ AppHeader.propTypes={
 }
 
 const headingStyle={
-color:'red',backgroundColor:'black'
+color:'red',backgroundColor:'white'
 }
 
  export default AppHeader

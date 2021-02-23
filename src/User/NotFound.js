@@ -9,6 +9,7 @@ class NotFound extends React.Component{
             <div>
             <h1> 404 ! Page is not Found</h1>
                 <Button  shape="round" type="primary"  icon={<DownloadOutlined />}>Go Back </Button>
+
             </div>
         );
     }
