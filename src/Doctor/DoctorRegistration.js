@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Form, Input, Button, Select } from 'antd';
+import {Form, Input, Button, Select, Spin} from 'antd';
 import {Option} from "antd/es/mentions";
 
 
@@ -9,8 +9,9 @@ class Demo extends React.Component {
 
     render() {
         return (
+
             <div>
-            <Form ref={this.formRef} name="control-ref" onFinish={this.onFinish}>
+                <Form ref={this.formRef} name="control-ref" onFinish={this.onFinish}>
                 <Form.Item name="note" label="Note" rules={[{ required: true }]}>
                     <Input />
                 </Form.Item>
