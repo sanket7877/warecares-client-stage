@@ -18,7 +18,6 @@ class Demo extends React.Component {
                     <Form.Item name="firstname" label="firstname" rules={[{ required: true }]}>
                         <Input />
                     </Form.Item>
-                    </Form.Item>
                     <Form.Item name="lastname" label="lastname" rules={[{required:true}]}>
                         <Input />
                     </Form.Item>
@@ -56,7 +55,7 @@ class Demo extends React.Component {
                     <Button htmlType="button" onClick={this.onReset}>
                         Reset
                     </Button>
-                    <Button type="link" htmlType="button" onClick={this.onFill}>
+                git    <Button type="link" htmlType="button" onClick={this.onFill}>
                         Fill form
                     </Button>
                 </Form.Item>
