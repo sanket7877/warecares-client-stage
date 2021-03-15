@@ -8,7 +8,7 @@ import Home from "./User/Home"
 import NotFound from "./User/NotFound";
 import DoctorRegistration from "./Doctor/DoctorRegistration"
 import AppHeader from "./User/AppHeader";
-import { Spin } from 'antd';
+import BookAppointment from "./Appointment/BookAppointment";
 
 const { Header, Content } = Layout;
 
@@ -21,12 +21,17 @@ const App = () =>{
 
           <Content>
             <NavLink to="/home" style={{color:"black"}}> Home</NavLink>
+&nbsp;
+             <NavLink to="/BookAppointment">Book Appointment</NavLink>
      <Switch>
+
+         <Route exact path="/home"><Home/></Route>
 
          <Route exact path="/d_registration"><DoctorRegistration/></Route>
          <Route exact path="/login" ><userlogin/></Route>
          <Route exact path="/"> <Home/> </Route>
-         <Route exact path="/home"><Home/></Route>
+         <Route exact="/BookAppointment"><BookAppointment/></Route>
+
          <Route component={NotFound}/>
 
      </Switch>

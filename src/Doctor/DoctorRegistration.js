@@ -1,6 +1,6 @@
 import React from "react";
 
-import {Form, Input, Button, Select, Spin} from 'antd';
+import {Form, Input, Button, Select} from 'antd';
 import {Option} from "antd/es/mentions";
 
 
@@ -11,7 +11,7 @@ class Demo extends React.Component {
         return (
 
             <div>
-                <Form ref={this.formRef} name="control-ref" onFinish={this.onFinish}>
+                <Form wrapperCol={{ span: 3}} ref={this.formRef} name="control-ref" onFinish={this.onFinish}>
                 <Form.Item name="note" label="Note" rules={[{ required: true }]}>
                     <Input />
                 </Form.Item>
@@ -19,7 +19,7 @@ class Demo extends React.Component {
                         <Input />
                     </Form.Item>
                     <Form.Item name="lastname" label="lastname" rules={[{required:true}]}>
-                        <Input />
+                        <Input/>
                     </Form.Item>
                 <Form.Item name="gender" label="Gender" rules={[{ required: true }]}>
                     <Select
@@ -55,7 +55,7 @@ class Demo extends React.Component {
                     <Button htmlType="button" onClick={this.onReset}>
                         Reset
                     </Button>
-                git    <Button type="link" htmlType="button" onClick={this.onFill}>
+                  <Button type="link" htmlType="button" onClick={this.onFill}>
                         Fill form
                     </Button>
                 </Form.Item>
