@@ -15,6 +15,13 @@ class Demo extends React.Component {
                 <Form.Item name="note" label="Note" rules={[{ required: true }]}>
                     <Input />
                 </Form.Item>
+                    <Form.Item name="firstname" label="firstname" rules={[{ required: true }]}>
+                        <Input />
+                    </Form.Item>
+                    </Form.Item>
+                    <Form.Item name="lastname" label="lastname" rules={[{required:true}]}>
+                        <Input />
+                    </Form.Item>
                 <Form.Item name="gender" label="Gender" rules={[{ required: true }]}>
                     <Select
                         placeholder="Select a option and change input text above"

@@ -17,7 +17,7 @@ const App = () =>{
     return (
 <>
     <Layout>
-        <Header><AppHeader/></Header>
+        <Header style={{backgroundColor: "#750ddd"}}><AppHeader/></Header>
 
           <Content>
             <NavLink to="/home" style={{color:"black"}}> Home</NavLink>

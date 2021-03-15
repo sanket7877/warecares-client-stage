@@ -20,13 +20,10 @@ const AppHeader=({title})=>
 {
 
     return(
-    <header>
 
     <div>
-
     </div>
 
-    </header>
     );
 }
 
