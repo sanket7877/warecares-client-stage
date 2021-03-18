@@ -20,7 +20,8 @@
     width:250px;
     height:60px;
     color:#1890ff;
-    font-weight:bold
+    font-weight:bold;
+
 }
 @media only screen and (max-width: 600px) {
     .button{

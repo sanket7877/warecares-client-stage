@@ -12,6 +12,8 @@ import BookAppointment from "./Appointment/BookAppointment";
 import Login from "./User/Login/Login"
 import SignUp from "./User/SignUp/SignUp";
 import UserRegistration from "./User/SignUp/User/UserRegistration";
+import {  CopyrightOutlined } from '@ant-design/icons';
+
 const { Header, Content } = Layout;
 
 
@@ -38,6 +40,9 @@ const App = () =>{
 
               </Switch>
         </Content>
+        <footer className="app-footer">
+            <h1 ><CopyrightOutlined /> Warecares 2021</h1>
+        </footer>
     </Layout>
 </>
 

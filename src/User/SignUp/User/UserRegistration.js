@@ -1,5 +1,6 @@
 import React from 'react';
-import {Button, Form, Input} from "antd";
+import {Button, Form, Input,message} from "antd";
+import {  LoadingOutlined } from '@ant-design/icons';
 import "./UserRegistration.css";
 
 class UserRegistration extends React.Component{
@@ -7,6 +8,7 @@ class UserRegistration extends React.Component{
     render() {
         return (
             <div className="signup-container">
+                <h1>User Registration</h1>
                 <Form onFinish={this.onFinish} className="signup-form">
                     <Form.Item name="Firstname" rules={[{required:true}]}>
                         <Input size="large" name="firstname" placeholder="Firstname"/>
@@ -15,7 +17,7 @@ class UserRegistration extends React.Component{
                         <Input size="large" placeholder="Username" name="username"   />
                     </Form.Item>
                     <Form.Item>
-                        <Button size="large" className="signup-form-button" type="primary" htmlType="submit">Register</Button>
+                        <Button   size="large" className="signup-form-button" type="primary" htmlType="submit">Register</Button>
                     </Form.Item>
                 </Form>
 
@@ -39,6 +41,16 @@ class UserRegistration extends React.Component{
                             two parts, the old town and the modern city.</p>
                     </div>
 
+                    <div className="col-3 col-s-12">
+                        <div className="aside">
+                            <h2>What?</h2>
+                            <p>Chania is a city on the island of Crete.</p>
+                            <h2>Where?</h2>
+                            <p>Crete is a Greek island in the Mediterranean Sea.</p>
+                            <h2>How?</h2>
+                            <p>You can reach Chania airport from all over Europe.</p>
+                        </div>
+                    </div>
                     <div className="col-3 col-s-12">
                         <div className="aside">
                             <h2>What?</h2>
