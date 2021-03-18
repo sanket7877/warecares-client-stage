@@ -19,7 +19,7 @@ const App = () =>{
 <>
     <Layout>
         <AppHeader/>
-          <Content style={{backgroundColor: "#ffffff"}}>
+          <Content className="app-content">
 
               <Switch>
 
