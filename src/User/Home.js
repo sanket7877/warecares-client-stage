@@ -8,10 +8,9 @@ class Home extends React.Component{
 
             <div>
             <h1>Welcome to  Home</h1>
-                <Button onClick={()=>alert('nice click again')}>hi</Button>
-                <DatePicker/>
-                <Button > <NavLink to="/d_registration" style={{color:"black"}}>Doctor Registration </NavLink></Button>
-                <h1>Your are in home</h1>
+                <Button  onClick={()=>alert('nice click again')}>hi</Button>
+
+                  <h1>Welcome to Application.</h1>
             </div>
 
         );

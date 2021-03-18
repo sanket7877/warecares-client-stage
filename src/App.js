@@ -9,7 +9,8 @@ import NotFound from "./User/NotFound";
 import DoctorRegistration from "./Doctor/DoctorRegistration"
 import AppHeader from "./User/AppHeader";
 import BookAppointment from "./Appointment/BookAppointment";
-
+import Login from "./User/Login/Login"
+import SignUp from "./User/SignUp/SignUp";
 const { Header, Content } = Layout;
 
 
@@ -17,24 +18,23 @@ const App = () =>{
     return (
 <>
     <Layout>
-        <Header style={{backgroundColor: "#750ddd"}}><AppHeader/></Header>
+        <AppHeader/>
+          <Content style={{backgroundColor: "#ffffff"}}>
 
-          <Content>
-            <NavLink to="/home" style={{color:"black"}}> Home</NavLink>
-&nbsp;
-             <NavLink to="/BookAppointment">Book Appointment</NavLink>
-     <Switch>
+              <Switch>
 
-         <Route exact path="/home"><Home/></Route>
+                  <Route exact path="/home"><Home/></Route>
+                  <Route exact path="/bookAppointment"><BookAppointment/></Route>
+                  <Route exact path="/login"><Login/></Route>
 
-         <Route exact path="/d_registration"><DoctorRegistration/></Route>
-         <Route exact path="/login" ><userlogin/></Route>
-         <Route exact path="/"> <Home/> </Route>
-         <Route exact="/BookAppointment"><BookAppointment/></Route>
+                  <Route exact path="/d_registration"><DoctorRegistration/></Route>
+                  <Route exact path="/login" ><userlogin/></Route>
+                  <Route exact path="/signup"><SignUp/></Route>
+                  <Route exact path="/"> <Home/> </Route>
+                  <Route component={NotFound}/>
 
-         <Route component={NotFound}/>
 
-     </Switch>
+              </Switch>
         </Content>
     </Layout>
 </>

@@ -29,29 +29,42 @@ class bookAppointment extends React.Component{
     render() {
         return (
             <div>
-                <Form   wrapperCol={{ span: 3}}   name="control-ref" onFinish={this.onFinish}>
-                    <Form.Item name="firstname" label="Firstname" rules={[{ required: true }]}>
-                        <Input name="firstname" onChange={this.myChangeHandler}/>
+                <Form
+                    {...formItemLayout}
+                    onFinish={this.onFinish}>
+
+
+                    <Form.Item   name="Firstname" label="Firstname" rules={[{required:true}]} >
+                        <input  name="Firstname"/>
                     </Form.Item>
 
-                    <Form.Item name="lastname" label="lastname" rules={[{required:true}]}>
-                        <input name="lastname"/>
+                    <Form.Item   name="lastname" label="lastname" rules={[{required:true}]} >
+                        <input  name="lastname"/>
                     </Form.Item>
-                    <Form.Item name="date" label="Book Date" rules={[{required:true}]}>
+
+                    <Form.Item name="Book date" label="Book Date" rules={[{required:true}]}>
                         <DatePicker onChange={this.mydChangeHandler}/>
                     </Form.Item>
                     <Form.Item >
-                        <Button type="primary" htmlType="submit">
+                        <Button {...formItemLayout}  shape="round" type="primary" htmlType="submit">
                             Submit
                         </Button>
                     </Form.Item>
                 </Form>
 
-                <h1>{this.state.firstname}</h1>
-                <h2>{this.state.date}</h2>
 
             </div>
         );
     }
 }
+const formItemLayout = {
+    labelCol: {
+        xs: { span: 8 },
+        sm: { span: 8 },
+    },
+    wrapperCol: {
+        xs: { span: 8 },
+        sm: { span: 8 },
+    },
+};
 export default bookAppointment;

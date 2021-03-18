@@ -1,6 +1,6 @@
 import React from 'react';
 import {Button} from "antd";
-import { DownloadOutlined } from '@ant-design/icons';
+import {Link} from "react-router-dom";
 
 class NotFound extends React.Component{
     render(){
@@ -8,7 +8,7 @@ class NotFound extends React.Component{
 
             <div>
             <h1> 404 ! Page is not Found</h1>
-                <Button  shape="round" type="primary"  icon={<DownloadOutlined />}>Go Back </Button>
+                <Button  shape="round" type="primary"><Link to="/home" >Go Back </Link></Button>
 
             </div>
         );
