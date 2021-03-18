@@ -11,6 +11,7 @@ import AppHeader from "./User/AppHeader";
 import BookAppointment from "./Appointment/BookAppointment";
 import Login from "./User/Login/Login"
 import SignUp from "./User/SignUp/SignUp";
+import UserRegistration from "./User/SignUp/User/UserRegistration";
 const { Header, Content } = Layout;
 
 
@@ -30,6 +31,7 @@ const App = () =>{
                   <Route exact path="/d_registration"><DoctorRegistration/></Route>
                   <Route exact path="/login" ><userlogin/></Route>
                   <Route exact path="/signup"><SignUp/></Route>
+                  <Route exact path="/userRegistration"><UserRegistration/></Route>
                   <Route exact path="/"> <Home/> </Route>
                   <Route component={NotFound}/>
 
