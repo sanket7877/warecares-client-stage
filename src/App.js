@@ -2,7 +2,7 @@
 
 import './App.css';
 import {Layout} from "antd";
-import {Switch, Route, withRouter, NavLink} from "react-router-dom";
+import {Switch, Route, withRouter} from "react-router-dom";
 import userlogin from "./User/userlogin";
 import Home from "./User/Home"
 import NotFound from "./User/NotFound";
@@ -13,8 +13,9 @@ import Login from "./User/Login/Login"
 import SignUp from "./User/SignUp/SignUp";
 import UserRegistration from "./User/SignUp/User/UserRegistration";
 import {  CopyrightOutlined } from '@ant-design/icons';
+import Dashboard from "./User/Dashboard";
 
-const { Header, Content } = Layout;
+const { Content } = Layout;
 
 
 const App = () =>{
@@ -33,6 +34,7 @@ const App = () =>{
                   <Route exact path="/d_registration"><DoctorRegistration/></Route>
                   <Route exact path="/login" ><userlogin/></Route>
                   <Route exact path="/signup"><SignUp/></Route>
+                  <Route exact path="/user/dashboard"><Dashboard/></Route>
                   <Route exact path="/userRegistration"><UserRegistration/></Route>
                   <Route exact path="/"> <Home/> </Route>
                   <Route component={NotFound}/>
@@ -41,7 +43,8 @@ const App = () =>{
               </Switch>
         </Content>
         <footer className="app-footer">
-            <h1 ><CopyrightOutlined /> Warecares 2021</h1>
+            <h1><CopyrightOutlined /> Warecares 2021</h1>
+
         </footer>
     </Layout>
 </>

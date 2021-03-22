@@ -1,0 +1,14 @@
+.appointment-container {
+    max-width: 420px;
+    margin: 0 auto;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+.appointment-form input {
+    margin-bottom: 3px;
+}
+.appointment-form-button {
+    width: 100%;
+
+}

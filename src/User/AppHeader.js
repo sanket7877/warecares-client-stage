@@ -9,9 +9,9 @@ import "./ap.css"
 
 
 
+
 const AppHeader=({title})=>
 {
-    const { SubMenu } = Menu;
     return(
 
         <Header className="app-header">
@@ -20,7 +20,9 @@ const AppHeader=({title})=>
 
             <Menu.Item size="large" key="home" style={{float:"right",color:"white"}}><Link to="/home">Home</Link></Menu.Item>
             <Menu.Item key="Login"style={{float:"right",color:"white"}}> <Link to="/login">Login</Link></Menu.Item>
-            <h2 key="home" style={{float:"left"}}>Warecares</h2>
+            <h2 key="newhome" style={{float:"left"}}>Warecares</h2>
+
+            <Menu.Item key="bookappointment" style={{float:"left",color:"white"}}> <Link to="/bookAppointment">Book Appointment</Link></Menu.Item>
 
             <Menu.Item key="SignUp" style={{float:"right",color:"white"}}><Link to="/signup">Sign Up</Link></Menu.Item>
         </Menu>

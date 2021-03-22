@@ -1,5 +1,5 @@
 import React from "react";
-import {Button, Form, Input, Divider, Row,Col} from "antd";
+import {Button, Row,Col} from "antd";
 import "./SignUp.css"
 import {Link} from "react-router-dom";
 

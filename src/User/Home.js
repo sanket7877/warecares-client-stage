@@ -1,9 +1,9 @@
 import React from 'react';
-import {Button, DatePicker} from "antd";
-import {NavLink} from "react-router-dom";
+import {Button} from "antd";
 
 class Home extends React.Component{
     render(){
+        setTimeout(console.log("Time intervel added"),1000)
         return(
 
             <div>
