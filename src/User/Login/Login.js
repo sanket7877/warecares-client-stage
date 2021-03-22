@@ -68,8 +68,8 @@ class Login extends React.Component{
                 <h1 align="center" >Login Form</h1>
             </div>
                 <div className="login-container">
-                <Form   className="login-form">
-                    <Form.Item name="usernameOrEmail" rules={[{required:true}]}  >
+                <Form  onFinish={this.onFinish}  className="login-form">
+                    <Form.Item  name="usernameOrEmail" rules={[{required:true}]}  >
                         <Input size="large" placeholder="Username" onChange={this.changeUsernameHandler} name="usernameOrEmail" prefix={<UserOutlined />}  />
                     </Form.Item>
                     <Form.Item name="password"  rules={[{required:true}]}  >

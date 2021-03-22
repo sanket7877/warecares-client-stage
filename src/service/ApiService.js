@@ -32,3 +32,10 @@ export function login(loginRequest) {
     });
 
 }
+export function signup(signupRequest) {
+    return request({
+        url: API_BASE_URL + "/user/createuser",
+        method: 'POST',
+        body: JSON.stringify(signupRequest)
+    });
+}
