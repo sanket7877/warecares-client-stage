@@ -13,7 +13,8 @@ class Login extends React.Component{
         this.state={
             usernameOrEmail:'',
             password:'',
-            token:''
+            token:'',
+            login:''
         }
         this.handleSubmit = this.handleSubmit.bind(this);
 
@@ -41,6 +42,7 @@ class Login extends React.Component{
                             this.setState({token:response.accessToken})
                             localStorage.setItem(ACCESS_TOKEN, this.state.token);
                          console.log(localStorage.getItem(ACCESS_TOKEN));
+                         this.setState({login:'logged in'})
                         message.success("successfully logged in ",10);
                         this.props.history.push("/user/dashboard");
 
@@ -81,6 +83,7 @@ class Login extends React.Component{
                     </Form.Item>
                 </Form>
                 </div>
+        <h1>{this.state.login}</h1>
     </div>
 
         );
