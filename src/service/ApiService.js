@@ -25,7 +25,6 @@ const request = (options) => {
 };
 export function login(loginRequest) {
 
-    console.log("called"+JSON.stringify(loginRequest));
     return request({
         url: API_BASE_URL + "/auth/signin",
         method: 'POST',

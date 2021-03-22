@@ -1,5 +1,5 @@
 import React from "react";
-import {Button, Form, Input,notification} from "antd";
+import {Button, Form, Input,notification,message} from "antd";
 import { UserOutlined ,LockOutlined} from '@ant-design/icons';
 import "./login.css";
 import {login} from "../../service/ApiService";
@@ -41,7 +41,7 @@ class Login extends React.Component{
                             this.setState({token:response.accessToken})
                             localStorage.setItem(ACCESS_TOKEN, this.state.token);
                          console.log(localStorage.getItem(ACCESS_TOKEN));
-
+                        message.success("successfully logged in ",10);
                         this.props.history.push("/user/dashboard");
 
 
