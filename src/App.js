@@ -3,7 +3,6 @@
 import './App.css';
 import {Layout} from "antd";
 import {Switch, Route, withRouter} from "react-router-dom";
-import userlogin from "./User/userlogin";
 import Home from "./User/Home"
 import NotFound from "./User/NotFound";
 import DoctorRegistration from "./Doctor/DoctorRegistration"
@@ -19,6 +18,11 @@ const { Content } = Layout;
 
 
 const App = () =>{
+
+    function handleLogin(){
+            this.props.history.push("/user/dashboard");
+    }
+
     return (
 <>
     <Layout>
@@ -29,10 +33,8 @@ const App = () =>{
 
                   <Route exact path="/home"><Home/></Route>
                   <Route exact path="/bookAppointment"><BookAppointment/></Route>
-                  <Route exact path="/login"><Login/></Route>
-
+                  <Route exact path="/login" render={(props) =><Login  onLogin={handleLogin} {...props} />}/>
                   <Route exact path="/d_registration"><DoctorRegistration/></Route>
-                  <Route exact path="/login" ><userlogin/></Route>
                   <Route exact path="/signup"><SignUp/></Route>
                   <Route exact path="/user/dashboard"><Dashboard/></Route>
                   <Route exact path="/userRegistration"><UserRegistration/></Route>

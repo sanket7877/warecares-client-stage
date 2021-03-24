@@ -33,9 +33,11 @@ export function login(loginRequest) {
 
 }
 export function signup(signupRequest) {
+    console.log("called :-",signupRequest);
     return request({
         url: API_BASE_URL + "/user/createuser",
         method: 'POST',
         body: JSON.stringify(signupRequest)
     });
+
 }
