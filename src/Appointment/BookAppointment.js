@@ -4,9 +4,6 @@ import {Button, Form, Input, message, Result, Spin} from "antd";
 import "./BookAppointment.css";
 import {payment} from "../service/ApiService";
 
-
-
-
 class bookAppointment extends React.Component{
 
 

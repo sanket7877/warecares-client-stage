@@ -23,6 +23,9 @@ const App = () =>{
             this.props.history.push("/user/dashboard");
     }
 
+    function handleLogout(){
+        this.props.history.push("/");
+    }
     return (
 <>
     <Layout>
