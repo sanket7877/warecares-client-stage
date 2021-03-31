@@ -42,9 +42,9 @@ class Login extends React.Component{
                         });
                     }
                 }
-                );
 
-            }
+                );
+  }
     onFinishFailed = (errorInfo: any) => {
         console.log('Failed:', errorInfo);
     };
@@ -52,7 +52,7 @@ class Login extends React.Component{
      return (
            <div>
                <div>
-                   <h1 align="center" >Login Form</h1>
+                   <h1 align="center" >Please Login</h1>
                </div>
 
             <Spin spinning={this.state.loading}>
@@ -65,18 +65,16 @@ class Login extends React.Component{
                                 <Input size="large" placeholder="Password"   name="password" type="password"  prefix={<LockOutlined />}  />
                             </Form.Item>
 
-                          <Form.Item >
+                            <Form.Item>
                                <Button size="large"    htmlType="submit" type="primary"  className="login-form-button" >
                                     Login
                                </Button>
-                             </Form.Item>
+                            </Form.Item>
                         </Form>
                     </div>
                 </Spin>
             </div>
-
         );
     }
-
 }
 export default Login;

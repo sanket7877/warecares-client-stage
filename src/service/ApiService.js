@@ -41,3 +41,11 @@ export function signup(signupRequest) {
     });
 
 }
+
+export function payment(payment) {
+    return request({
+        url: API_BASE_URL + "/appointment/createOrder",
+        method: 'POST',
+        body: JSON.stringify(payment)
+    });
+}

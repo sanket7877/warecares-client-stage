@@ -23,7 +23,9 @@ class SignUp extends React.Component{
 
                          <div className="signup-container">
                                 <div>
+                                    <Link to="/doctorRegistration">
                                     <Button className="button"  >Register Yourself as Doctor</Button>
+                                    </Link>
                                 </div>
                              </div>
                           </Col>

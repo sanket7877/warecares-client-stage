@@ -3,7 +3,6 @@ import {Button} from "antd";
 
 class Home extends React.Component{
     render(){
-        setTimeout(console.log("Time intervel added"),1000)
         return(
 
             <div>

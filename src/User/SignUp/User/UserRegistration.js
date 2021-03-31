@@ -47,8 +47,8 @@ class UserRegistration extends React.Component{
                         <Input size="large"  placeholder="Username" name="username" />
                     </Form.Item>
 
-                    <Form.Item name="m_no" rules={[{required:true}]}  >
-                        <Input size="large"   placeholder="Mobile No"  />
+                    <Form.Item name="m_no" rules={[{required:true,message:'mobile number is required.'}]}  >
+                        <Input size="large"   placeholder="Mobile No" />
                     </Form.Item>
 
                     <Form.Item name="password" rules={[{required:true}]}  >
