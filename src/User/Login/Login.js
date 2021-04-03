@@ -3,7 +3,6 @@ import {Button, Form, Input,notification,message,Spin} from "antd";
 import { UserOutlined ,LockOutlined} from '@ant-design/icons';
 import "./login.css";
 import {login} from "../../service/ApiService";
-
 export const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8080/api';
 export const ACCESS_TOKEN = 'accessToken';
 
@@ -20,23 +19,23 @@ class Login extends React.Component{
     }
     handleSubmit(value:any) {
         this.setState({loading:true})
-        console.log("called");
                 login(value)
                     .then(response => {
+
                             this.setState({token:response.accessToken,loading:false,role:response.role[0].name})
 
                             localStorage.setItem(ACCESS_TOKEN, this.state.token);
-
                             message.success("successfully logged in ",10);
-                           this.props.history.push('/user/dashboard',null);
+                            this.props.onLogin();
 
-                           console.log(this.state.role);
+
                     }).catch(error => {
                         this.setState({loading:false})
 
                         if(error.status === 401) {
+                            this.props.history.push("/login");
 
-                        notification.error({
+                            notification.error({
                             message: 'Polling App',
                             description: 'Your Username or Password is incorrect. Please try again!'
                         });
@@ -51,8 +50,8 @@ class Login extends React.Component{
     render(){
      return (
            <div>
-               <div>
-                   <h1 align="center" >Please Login</h1>
+               <div >
+                   <h1 className="login-title">Please Login</h1>
                </div>
 
             <Spin spinning={this.state.loading}>

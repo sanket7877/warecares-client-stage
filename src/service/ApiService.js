@@ -49,3 +49,12 @@ export function payment(payment) {
         body: JSON.stringify(payment)
     });
 }
+export function getCurrentUser() {
+    if(!localStorage.getItem(ACCESS_TOKEN)) {
+        return Promise.reject("No access token set.");
+    }
+    return request({
+        url: API_BASE_URL + "/user/user/me",
+        method: 'GET',
+    });
+}

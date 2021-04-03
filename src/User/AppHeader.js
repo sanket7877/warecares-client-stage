@@ -1,41 +1,63 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import { Menu } from 'antd';
-import "./AppHeader.css"
-import {Link} from "react-router-dom";
+import { Menu} from 'antd';
+import "./ApHeader.css"
+import {Link,withRouter} from "react-router-dom";
 import {Header} from "antd/es/layout/layout";
 import "./ap.css";
+import logo from "./ncover.png";
 
-const AppHeader=({title})=>
-{
-    return(
+class AppHeader extends React.Component{
 
-        <Header className="app-header">
-    <div>
-        <Menu mode="horizontal" className="ap">
 
-            <Menu.Item size="large" key="home" style={{float:"right",color:"white"}}><Link to="/home">Home</Link></Menu.Item>
-            <Menu.Item key="Login"style={{float:"right",color:"white"}}> <Link to="/login">Login</Link></Menu.Item>
-            <h2 key="newhome" style={{float:"left"}}>Warecares</h2>
-            <Menu.Item key="SignUp" style={{float:"right",color:"white"}}><Link to="/signup">Sign Up</Link></Menu.Item>
-        </Menu>
+    constructor(props) {
+        super(props);
+        this.handleMenuClick=this.handleMenuClick.bind(this);
+    }
 
-    </div>
-        </Header>
 
-    );
+    handleMenuClick({ key }) {
+        if(key === "logout") {
+            this.props.onLogout();
+        }}
+    render() {
+
+            let  menuItems;
+              if(this.props.currentUser){
+                  menuItems=[
+                      <Menu.Item size="large" key="profile"  className="menu-item"><Link to="/profile" >profile</Link></Menu.Item>,
+                      <Menu.Item size="large" key="logout"  className="menu-item" >Logout</Menu.Item>
+                ];
+
+            }
+         else{
+             menuItems=[
+                <Menu.Item  key="home"  className="menu-item"><Link to="/home">Home</Link></Menu.Item>,
+                <Menu.Item  key="Login" className="menu-item"> <Link to="/login">Login</Link></Menu.Item>,
+                <Menu.Item  key="SignUp" className="menu-item"><Link to="/signup">Sign Up</Link></Menu.Item>,
+
+             ];
+        }
+
+        return (
+           <Header className="app-mheader">
+                <div>
+                    <div>
+                             <img className="logo-image"  src={logo} alt="logo" />
+                    </div>
+                    <Menu mode="horizontal" onClick={this.handleMenuClick} selectedKeys={[this.props.location.pathname]} className="ap" style={{ lineHeight: '64px' }} >
+
+                            {menuItems}
+
+                    </Menu>
+                </div>
+            </Header>
+
+        );
+    }
 }
 
-AppHeader.defaultProps={
-    title:'Warecares',
-}
 
-AppHeader.propTypes={
-    title:PropTypes.string.isRequired,
-}
-
-
- export default AppHeader
+ export default withRouter(AppHeader);
 
 
 
