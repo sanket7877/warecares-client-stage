@@ -38,10 +38,9 @@ class Login extends React.Component{
                             notification.error({
                             message: 'Polling App',
                             description: 'Your Username or Password is incorrect. Please try again!'
-                        });
+                            });
+                        }
                     }
-                }
-
                 );
   }
     onFinishFailed = (errorInfo: any) => {

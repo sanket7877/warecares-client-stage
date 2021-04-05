@@ -4,7 +4,7 @@ import "./ApHeader.css"
 import {Link,withRouter} from "react-router-dom";
 import {Header} from "antd/es/layout/layout";
 import "./ap.css";
-import logo from "./ncover.png";
+import logo from "./cover.png";
 
 class AppHeader extends React.Component{
 

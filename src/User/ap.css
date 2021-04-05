@@ -2,7 +2,6 @@
 {
     box-shadow: 0 2px 8px #f0f1f2;
 }
-
 .menu-item{
     height:80px;
     float:right;
@@ -11,8 +10,7 @@
 }
 .logo-image{
     float: left;
-    width: 120px;
-    height: 40px;
-    margin: 16px 24px 16px 0;
+    width: 60px;
+    height: 80px;
     background: rgba(255, 255, 255, 0.3);
 }

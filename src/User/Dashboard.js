@@ -7,7 +7,8 @@ class Dashboard extends React.Component{
         super(props);
 
         this.state={
-            name:''
+            name:'',
+            roleName:''
         }
         this.loadCurrentUser=this.loadCurrentUser.bind(this);
         this.isAuthenticate=this.isAuthenticate.bind(this);
@@ -25,9 +26,7 @@ class Dashboard extends React.Component{
     }
     loadCurrentUser(){
         getCurrentUser().then(res=>{
-           console.log(res)
-            this.setState({name:res.username})
-
+            this.setState({name:res.username,roleName:res.roles[0].name})
         })
             .catch(res=>{
                 if(res.status===401){
@@ -37,7 +36,38 @@ class Dashboard extends React.Component{
     }
     render() {
 
+
+        if(this.state.roleName==='ROLE_USER'){
+            return (
+              <div>
+                  <h1>
+                      welcome  to user dashboard  {this.state.name}
+                  </h1>
+
+                  <h1>
+                      this dashboard for user!!!
+                  </h1>
+              </div>
+            );
+        }
+
+        if(this.state.roleName==='ROLE_DOCTOR'){
+            return (
+                <div>
+                    <h1>
+                        welcome  to Doctor dashboard  {this.state.name}
+                    </h1>
+
+                    <h1>
+                        this dashboard for user!!!
+                    </h1>
+                </div>
+            );
+        }
+
+
      return (
+
 
             <div>
                 <h1>

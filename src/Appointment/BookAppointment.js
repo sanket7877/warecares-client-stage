@@ -1,6 +1,6 @@
 
 import React from "react";
-import {Button, Form, Input, message, Result, Spin} from "antd";
+import {Button, DatePicker, Form, Input, message, Result, Spin} from "antd";
 import "./BookAppointment.css";
 import {payment} from "../service/ApiService";
 
@@ -18,20 +18,17 @@ class bookAppointment extends React.Component{
             success:false
         }
         this.mydChangeHandler=this.mydChangeHandler.bind(this);
-        this.myChangeHandler=this.myChangeHandler.bind(this);
         this.myPayment=this.myPayment.bind(this);
 
 
     }
-    myChangeHandler = (event) => {
-        this.setState({firstname: event.target.value});
-        console.log(this.state.firstname);
 
-    }
 
     mydChangeHandler = (event,b) => {
-        this.setState({mdate:b})
-        console.log(this.state.mdate)
+      //  this.setState({mdate:b})
+     //   console.log(this.state.mdate)
+        console.log(this.state.mdate);
+
     }
 
 
@@ -119,6 +116,19 @@ class bookAppointment extends React.Component{
 
 
     }
+    onFinish = (fieldsValue) => {
+             // Should format date value before submit.
+             let values = {
+                 ...fieldsValue,
+                 'date-picker': fieldsValue['date-picker'].format('YYYY-MM-DD'),
+             };
+
+             console.log(values);
+             this.setState({mdate:values["date-picker"],loading:true})
+          this.mydChangeHandler();
+          this.myPayment(values);
+
+         };
 
 
 render() {
@@ -126,9 +136,13 @@ render() {
         const container=(
             <Form
                 className="appointment-form"
-                onFinish={this.handleSubmit}>
+                onFinish={this.onFinish}>
                 <Form.Item name="amount" rules={[{required:true}]}>
                     <Input size="large" name="amount" placeholder="enter amount"/>
+                </Form.Item>
+
+                <Form.Item name="date-picker" rules={[{required:true}]}>
+                    <DatePicker />
                 </Form.Item>
 
                 <Form.Item >
@@ -136,6 +150,7 @@ render() {
                         Pay
                     </Button>
                 </Form.Item>
+
             </Form>
         )
 
@@ -150,9 +165,10 @@ render() {
         return (
 
             <div className="appointment-container">
-                <Spin spinning={this.state.loading} delay={500}>
+                <Spin spinning={this.state.loading}>
                     {container}
                 </Spin>
+                {this.state.mdate}
 
             </div>
 

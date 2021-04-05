@@ -58,3 +58,11 @@ export function getCurrentUser() {
         method: 'GET',
     });
 }
+
+export function getAllAppointments() {
+
+    return request({
+        url: API_BASE_URL + "/appointment/appoinements",
+        method: 'GET',
+    });
+}
