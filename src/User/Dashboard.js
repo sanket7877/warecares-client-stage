@@ -16,17 +16,24 @@ class Dashboard extends React.Component{
     componentDidMount() {
 
 
-    this.loadCurrentUser()
+         this.isAuthenticate();
+
+        this.loadCurrentUser();
     }
 
     isAuthenticate(){
-        if(this.props.isAuthenticated===false){
+       // if(this.props.isAuthenticated===false){
+      //      this.props.history.push("/");
+    //    }
+        if(localStorage.getItem("accessToken")===null){
             this.props.history.push("/");
         }
     }
     loadCurrentUser(){
         getCurrentUser().then(res=>{
             this.setState({name:res.username,roleName:res.roles[0].name})
+
+            this.props.onLogin();
         })
             .catch(res=>{
                 if(res.status===401){
@@ -35,7 +42,6 @@ class Dashboard extends React.Component{
             });
     }
     render() {
-
 
         if(this.state.roleName==='ROLE_USER'){
             return (
@@ -47,28 +53,13 @@ class Dashboard extends React.Component{
                   <h1>
                       this dashboard for user!!!
                   </h1>
+
               </div>
-            );
-        }
-
-        if(this.state.roleName==='ROLE_DOCTOR'){
-            return (
-                <div>
-                    <h1>
-                        welcome  to Doctor dashboard  {this.state.name}
-                    </h1>
-
-                    <h1>
-                        this dashboard for user!!!
-                    </h1>
-                </div>
             );
         }
 
 
      return (
-
-
             <div>
                 <h1>
                      welcome  {this.state.name}

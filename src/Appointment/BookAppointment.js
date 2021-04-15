@@ -15,6 +15,7 @@ class bookAppointment extends React.Component{
             mdate:'',
             loading:false,
             amount:'',
+            mtime:'',
             success:false
         }
         this.mydChangeHandler=this.mydChangeHandler.bind(this);
@@ -40,9 +41,7 @@ class bookAppointment extends React.Component{
         payment(value).then(response=> {
                 console.log(response);
                     this.displayRazorpay(response);
-
-
-            }
+         }
                  );
 
     }
@@ -96,7 +95,7 @@ class bookAppointment extends React.Component{
                 address: "Soumya Dey Corporate Office",
             },
             theme: {
-                color: "#61dafb",
+                color: "#0f3fb8",
             },
 
         };
@@ -121,12 +120,14 @@ class bookAppointment extends React.Component{
              let values = {
                  ...fieldsValue,
                  'date-picker': fieldsValue['date-picker'].format('YYYY-MM-DD'),
+               //  'time-picker': fieldsValue['time-picker'].format('HH:mm:ss'),
+
              };
 
              console.log(values);
-             this.setState({mdate:values["date-picker"],loading:true})
+             this.setState({mdate:values["date-picker"],mtime:values["time-picker"],loading:true})
           this.mydChangeHandler();
-          this.myPayment(values);
+         this.myPayment(values);
 
          };
 
@@ -144,7 +145,6 @@ render() {
                 <Form.Item name="date-picker" rules={[{required:true}]}>
                     <DatePicker />
                 </Form.Item>
-
                 <Form.Item >
                     <Button size="large"  className="appointment-form-button"   shape="round" type="primary" htmlType="submit">
                         Pay
@@ -153,26 +153,21 @@ render() {
 
             </Form>
         )
-
-
     if(this.state.success===true){
 
         return (
             <Result status="success"/>
         )
     }
-
         return (
-
             <div className="appointment-container">
                 <Spin spinning={this.state.loading}>
                     {container}
                 </Spin>
                 {this.state.mdate}
 
+                {this.state.mtime}
             </div>
-
-
         );
     }
 

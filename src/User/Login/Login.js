@@ -1,9 +1,8 @@
 import React from "react";
-import {Button, Form, Input,notification,message,Spin} from "antd";
+import {Button, Form, Input,notification,message,Spin,Tooltip} from "antd";
 import { UserOutlined ,LockOutlined} from '@ant-design/icons';
 import "./login.css";
 import {login} from "../../service/ApiService";
-export const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8080/api';
 export const ACCESS_TOKEN = 'accessToken';
 
 class Login extends React.Component{
@@ -26,6 +25,7 @@ class Login extends React.Component{
 
                             localStorage.setItem(ACCESS_TOKEN, this.state.token);
                             message.success("successfully logged in ",10);
+
                             this.props.onLogin();
 
 
@@ -56,9 +56,11 @@ class Login extends React.Component{
             <Spin spinning={this.state.loading}>
                <div className="login-container">
                    <Form  onFinish={this.handleSubmit}  onFinishFailed={this.onFinishFailed} className="login-form">
+                       <Tooltip title="Enter Registered username or email">
                             <Form.Item  name="usernameOrEmail" rules={[{required:true, message:'please input your username or email '}]}  >
-                                <Input size="large" placeholder="Username"  name="usernameOrEmail" prefix={<UserOutlined />}  />
+                                <Input size="large" placeholder="use username of email"  name="usernameOrEmail" prefix={<UserOutlined />}  />
                             </Form.Item>
+                       </Tooltip>
                             <Form.Item name="password"  rules={[{required:true,message:'please input your password '}]}  >
                                 <Input size="large" placeholder="Password"   name="password" type="password"  prefix={<LockOutlined />}  />
                             </Form.Item>

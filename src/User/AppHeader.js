@@ -44,7 +44,7 @@ class AppHeader extends React.Component{
                     <div>
                              <img className="logo-image"  src={logo} alt="logo" />
                     </div>
-                    <Menu mode="horizontal" onClick={this.handleMenuClick} selectedKeys={[this.props.location.pathname]} className="ap" style={{ lineHeight: '64px' }} >
+                    <Menu mode="horizontal" onClick={this.handleMenuClick} selectedKeys={[this.props.location.pathname]}  style={{ lineHeight: '64px' }} >
 
                             {menuItems}
 

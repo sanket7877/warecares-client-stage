@@ -53,10 +53,13 @@ class DoctorRegistration extends React.Component{
                             </div>
                         </Col>
                     </Row>
-                    <Form.Item name="email" style={{padding:"10px"}} rules={[{type:"email",required:true,message:'please enter your email'}]}>
-                        <Input  placeholder="email" name="email" size="large"/>
-                    </Form.Item>
+                    <div>
 
+                        <Form.Item name="email" style={{padding:"10px"}} rules={[{type:"email",required:true,message:'please enter your email'}]}>
+                            <label>email:</label>
+                            <Input  placeholder="email" name="email" size="large"/>
+                        </Form.Item>
+                    </div>
 
                     <Form.Item name="file" rules={[{required:true}]}>
                        <Upload {...this.prop} maxCount={1}>
