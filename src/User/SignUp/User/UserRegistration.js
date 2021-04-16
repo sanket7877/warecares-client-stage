@@ -3,6 +3,7 @@ import {Button, Form, Input, message, Radio, Spin} from "antd";
 import "./UserRegistration.css";
 import {signup} from "../../../service/ApiService";
 
+
 class UserRegistration extends React.Component{
 
     constructor(props) {
@@ -31,6 +32,7 @@ class UserRegistration extends React.Component{
 
     render() {
         return (
+
             <div className="signup-container">
                 <Spin size="large" spinning={this.state.loading}>
                 <h1>User Registration </h1>
@@ -71,8 +73,10 @@ class UserRegistration extends React.Component{
                         <Button  size="large"  className="signup-form-button" type="primary" htmlType="submit">Register</Button>
                     </Form.Item>
                 </Form>
+
                 </Spin>
-             </div>
+
+                  </div>
         );
     }
 }
