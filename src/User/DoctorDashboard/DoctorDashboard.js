@@ -5,15 +5,21 @@ import Appointments from "./ListAppointments/Appointments";
 
 
 
-function DoctorDashboard(){
+function DoctorDashboard(myp){
     let { path, url } = useRouteMatch();
 
+    const [count,setCount]=useState(true);
     let history=useHistory();
 
     if(localStorage.getItem('accessToken')!==null){
 
         console.log("called");
-     //   myprops.onLogin();
+
+        if(count!==false){
+
+            myp.onDone();
+            setCount(false);
+        }
         console.log("here");
          return(
         <div>

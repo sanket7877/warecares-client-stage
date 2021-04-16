@@ -64,19 +64,16 @@ class App extends React.Component {
         });
     }
 
-    onLogin(){
-
-
+    onLogin() {
+            getCurrentUser().then(res => {
                 this.setState({
-                    currentUser: this.state.currentUser,
+                    currentUser: res,
                     isAuthenticated: true,
                     isLoading: false
-                });
-
-
-
-
-    }
+                })
+            })
+        console.log("done on login done")
+}
 
     handleLogout( notificationType="success", description="You're successfully logged out.") {
 
@@ -111,13 +108,13 @@ class App extends React.Component {
                             <Switch>
                                 <Route exact path='/' > <Home/></Route>
                                 <Route exact path="/home"><Home/></Route>
-                                <Route path='/doctor' render={(props)=><DoctorDashboard/>}/>
                                 <Route exact path="/bookAppointment"><BookAppointment/></Route>
 
                                 <Route exact path="/user/dashboard"  render={(props) =>   <Dashboard  onLogin={this.handleLogin} {...props}/>}/>
                                 <Route exact path="/login" render={(props) => <Login onLogin={this.handleLogin}   {...props} />}/>
                                 <Route exact path="/signup"><SignUp/></Route>
 
+                                <Route path='/doctor' render={(props)=><DoctorDashboard   onDone={this.onLogin}  />}/>
                                                      <Route exact path="/userRegistration"><UserRegistration/></Route>
                                                      <Route exact path="/doctorRegistration"><DoctorRegistration/></Route>
 
