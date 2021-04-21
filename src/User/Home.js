@@ -3,11 +3,6 @@ import {Button} from "antd";
 import "./Home.css"
 
 class Home extends React.Component{
-
-
-
-
-
     render(){
 
         return(
@@ -15,8 +10,6 @@ class Home extends React.Component{
                 <h1>Welcome to  Home</h1>
                     <Button  onClick={()=>alert('nice click again')}>hi</Button>
                 <h1>Welcome to Application.</h1>
-
-
             </div>
         );
     }

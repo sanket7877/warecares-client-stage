@@ -11,12 +11,62 @@ class Appointments extends React.Component{
         }
         this.loadAllAppointments=this.loadAllAppointments.bind(this);
         this.onDelete=this.onDelete.bind(this);
+        this.formatDateTime=this.formatDateTime.bind(this);
     }
     componentDidMount() {
 
                  this.loadAllAppointments();
 
         // setInterval(this.loadAllAppointments, 5000);
+    }
+
+    formatDateTime(dateTimeString) {
+        const date = new Date(dateTimeString);
+
+
+        const monthNames = [
+            "Jan", "Feb", "Mar", "Apr",
+            "May", "Jun", "Jul", "Aug",
+            "Sep", "Oct", "Nov", "Dec"
+        ];
+        const monthIndex = date.getMonth();
+        const year = date.getFullYear();
+
+
+       const getMin=(minutes)=>{
+           if(date.getMinutes()===0){
+               minutes='00'
+           }
+           if(date.getMinutes()===1){
+               minutes='01'
+           }
+           if(date.getMinutes()===2){
+               minutes='02'
+           }
+           if(date.getMinutes()===3){
+               minutes='03'
+           }
+           if(date.getMinutes()===4){
+               minutes='04'
+           }
+           if(date.getMinutes()===5){
+               minutes='05'
+           }
+           if(date.getMinutes()===6){
+               minutes='06'
+           }
+           if(date.getMinutes()===7){
+               minutes='07'
+           }
+           if(date.getMinutes()===8){
+               minutes='08'
+           }
+           if(date.getMinutes()===9){
+               minutes='09'
+           }
+       return minutes;
+       }
+       return date.getDate() + ' ' + monthNames[monthIndex] + ' ' + year + ' - ' + date.getHours() + ':' + getMin(date.getMinutes());
     }
 
     loadAllAppointments(){
@@ -31,7 +81,8 @@ class Appointments extends React.Component{
                         gender:row.gender,
                         description:row.description,
                         state:row.state,
-                        dob:row.dob
+                        dob:row.dob,
+                        ap_Date:this.formatDateTime(row.ap_date)
                     }
                 )
             )
@@ -89,6 +140,13 @@ class Appointments extends React.Component{
             fixed: 'left',
         },
         {
+            title: 'ap_Date',
+            width: 200,
+            dataIndex: 'ap_Date',
+            key: 'ap_Date',
+            fixed: 'left',
+        },
+        {
             title: 'Action',
             key: 'action',
             render: (_, record) =>
@@ -115,6 +173,5 @@ class Appointments extends React.Component{
             </div>
         );
     }
-
 }
 export default Appointments
