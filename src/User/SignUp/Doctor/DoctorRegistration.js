@@ -1,7 +1,6 @@
 import React from 'react';
-import {Form, Input, Row, Col, Button, Upload,message} from "antd";
+import {Form, Input, Row, Col, Button,message} from "antd";
 import "./DoctorRegistration.css"
-import { UploadOutlined } from '@ant-design/icons';
 
 class DoctorRegistration extends React.Component{
 
@@ -56,15 +55,19 @@ class DoctorRegistration extends React.Component{
                     <div>
 
                         <Form.Item name="email" style={{padding:"10px"}} rules={[{type:"email",required:true,message:'please enter your email'}]}>
-                            <label>email:</label>
+                            <label>Email:</label>
                             <Input  placeholder="email" name="email" size="large"/>
                         </Form.Item>
                     </div>
 
-                    <Form.Item name="file" rules={[{required:true}]}>
-                       <Upload {...this.prop} maxCount={1}>
-                           <Button size="large" icon={<UploadOutlined/>}>Click here to upload</Button>
-                       </Upload>
+                    <Form.Item name="username" style={{padding:"10px"}} rules={[{required:true,message:'Please enter username'}]}>
+                            <label>Username</label>
+                            <Input placeholder="username" size="large"/>
+                    </Form.Item>
+
+                    <Form.Item name="password" style={{padding:"10px"}} rules={[{required:true,message:'Please enter password'}]}>
+                        <label>Password</label>
+                        <Input placeholder="password" size="large"/>
                     </Form.Item>
                     <Form.Item style={{padding:"10px"}}>
                         <Button   size="large" type="primary" className="doctor-form-button" htmlType="submit">
