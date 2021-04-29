@@ -2,6 +2,15 @@ import React, {useState} from 'react';
 
 import { Link, Route, Switch,useRouteMatch,useHistory} from "react-router-dom";
 import Appointments from "./ListAppointments/Appointments";
+import Layout, {Content, Footer} from "antd/lib/layout/layout";
+import Sider from "antd/lib/layout/Sider";
+import {Menu} from "antd";
+import {
+    DesktopOutlined,
+    PieChartOutlined,
+    FileOutlined
+} from '@ant-design/icons';
+import Settings from "./Settings/Settings";
 
 
 
@@ -10,39 +19,65 @@ function DoctorDashboard(myp){
 
     const [count,setCount]=useState(true);
     let history=useHistory();
+    const [collapsed,setCollapsed]=useState(false)
 
     if(localStorage.getItem('accessToken')!==null){
 
         console.log("called");
-
         if(count!==false){
 
             myp.onDone();
             setCount(false);
         }
-        console.log("here");
-         return(
-        <div>
-            <h2>Topics</h2>
-            <ul>
-                <h1>Hello</h1>
-                <li>
-                    <Link to={`${url}/appointment`}>See Appointments</Link>
-                </li>
-            </ul>
-                <h1>Welcome to Doctor Dashboard</h1>
-            <Switch>
-                {/*<Route exact path={path}>*/}
-                {/*    <h3>Please select a topic.</h3>*/}
-                {/*</Route>*/}
-                {/*/!*<Route path={`${path}/:topicId`}>*!/*/}
-                {/*    <Topic />*/}
-                {/*</Route>*/}
 
-                <Route path={`${path}/appointment`} ><Appointments/></Route>
-            </Switch>
-        </div>
-        );
+
+      const  onCollapse= collapsed => {
+            console.log(collapsed);
+            setCollapsed(true);
+        };
+
+         return(
+             <Layout style={{ minHeight: '100vh' }}>
+                 <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}   style={{
+                     overflow: 'auto',
+                     height: '100vh',
+                     position: 'fixed',
+                     left: 0,
+                 }}>
+                     <div className="logo" />
+                     <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
+                         <Menu.Item key="1" icon={<PieChartOutlined />}>
+                             <Link to={`${url}/appointment`}>Appointments</Link>
+                         </Menu.Item>
+                         <Menu.Item key="2" icon={<DesktopOutlined />}>
+                             <Link to={`${url}/settings`}>Settings</Link>
+                         </Menu.Item>
+
+                         <Menu.Item key="9" icon={<FileOutlined />}>
+                              Files
+                         </Menu.Item>
+                     </Menu>
+                 </Sider>
+                 <Layout className="site-layout">
+                     <Content style={{ margin: '0 16px' }}>
+
+                         <div  style={{ padding: 24, textAlign: 'center' ,backgroundColor:'white'}}>
+
+                             <h1>Welcome to the DoctorDashboard</h1>
+                             <h2>here you can see all the menu of the appointment here.</h2>
+
+                             <Switch>
+                                 <Route  path={`${path}/appointment`}><Appointments/></Route>
+                                 <Route  path={`${path}/settings`}><Settings/></Route>
+
+                             </Switch>
+                         </div>
+                     </Content>
+                     <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+                 </Layout>
+             </Layout>
+         );
+
     }
     else
     {
@@ -56,22 +91,6 @@ function DoctorDashboard(myp){
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
 // function DoctorDashboard(){
 //
 //     let {path,url}=useRouteMatch();
@@ -127,46 +146,5 @@ function DoctorDashboard(myp){
 // }
 //
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-// class DoctorDashboard extends React.Component{
-//     state = {
-//         collapsed: false,
-//
-//     };
-//
-//     onCollapse = collapsed => {
-//         console.log(collapsed);
-//         this.setState({ collapsed });
-//     };
-//
-//
-//     componentDidMount() {
-//         console.log(this.props.match);
-//     }
-//
-//     render() {
-//         const { collapsed } = this.state;
-//
-//         const {path}=this.props.match;
-//
-//         return (
-//
-//         );
-//     }
-//
-// }
 
 export  default DoctorDashboard;

@@ -70,8 +70,13 @@ class App extends React.Component {
                 isAuthenticated: true,
                 isLoading: false
             })
+        }).catch(error=>{
+            if(error.status===500){
+                localStorage.removeItem('accessToken')
+                this.props.history.push("/login");
+            }
         })
-        console.log("done on login done")
+      
     }
 
     handleLogout(notificationType = "success", description = "You're successfully logged out.") {
@@ -108,7 +113,7 @@ class App extends React.Component {
 
                     <Switch>
                         <Route exact path='/'> <Home/></Route>
-                        <Route exact path="/home"><Home/></Route>
+                        <Route  path="/home"><Home/></Route>
                         <Route exact path="/bookAppointment"><BookAppointment/></Route>
 
                         <Route exact path="/user/dashboard"
@@ -125,28 +130,10 @@ class App extends React.Component {
 
                         <Route path="*" component={NotFound}/>
                     </Switch>
+
                 </Content>
             </Layout>
 
-            // <Layout>
-            //         <AppHeader {...this.props} isAuthenticated={this.state.isAuthenticated} currentUser={this.state.currentUser} onLogout={this.handleLogout} />
-            //
-            //             <Content className="app-content">
-            //
-            //                 <Switch>
-            //
-            //
-            //
-            //
-            //
-            //
-            //
-            //
-            //
-            //                 </Switch>
-            //
-            //         </Content>
-            //     </Layout>
 
         );
     }
