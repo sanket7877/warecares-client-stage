@@ -38,7 +38,7 @@ class Login extends React.Component {
                     this.props.history.push("/login");
 
                     notification.error({
-                        message: 'Polling App',
+                        message: 'Sorry',
                         description: 'Your Username or Password is incorrect. Please try again!'
                     });
                 }

@@ -1,6 +1,6 @@
 
 import React from "react";
-import {Button, DatePicker, Form, Input, message, Result, Spin} from "antd";
+import {Button, DatePicker, Form, InputNumber, message, Result, Spin} from "antd";
 import "./BookAppointment.css";
 import {payment} from "../service/ApiService";
 
@@ -139,11 +139,11 @@ render() {
                 className="appointment-form"
                 onFinish={this.onFinish}>
                 <Form.Item name="amount" rules={[{required:true}]}>
-                    <Input size="large" name="amount" placeholder="enter amount"/>
+                    <InputNumber  style={{width:"300px"}}  pattern="^[0-9]*$" defaultValue={3} size="large" name="amount" placeholder="enter amount"/>
                 </Form.Item>
 
                 <Form.Item name="date-picker" rules={[{required:true}]}>
-                    <DatePicker />
+                    <DatePicker style={{width:"300px"}} />
                 </Form.Item>
                 <Form.Item >
                     <Button size="large"  className="appointment-form-button"   shape="round" type="primary" htmlType="submit">
