@@ -66,3 +66,10 @@ export function getAllAppointments() {
         method: 'GET',
     });
 }
+export function getAllDoctors() {
+
+    return request({
+        url: API_BASE_URL + "/doctor/showdoctor",
+        method: 'GET',
+    });
+}
