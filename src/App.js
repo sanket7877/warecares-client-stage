@@ -101,14 +101,17 @@ class App extends React.Component {
         console.log("running");
     }
 
-
     render() {
+
+        let appMenu=[
+
+            <AppHeader {...this.props} isAuthenticated={this.state.isAuthenticated}
+                       currentUser={this.state.currentUser} onLogout={this.handleLogout}/>
+        ];
         return (
 
             <Layout>
-
-                <AppHeader {...this.props} isAuthenticated={this.state.isAuthenticated}
-                           currentUser={this.state.currentUser} onLogout={this.handleLogout}/>
+                {appMenu}
                 <Content className="app-content">
 
                     <Switch>
@@ -130,7 +133,6 @@ class App extends React.Component {
 
                         <Route path="*" component={NotFound}/>
                     </Switch>
-
                 </Content>
             </Layout>
 
