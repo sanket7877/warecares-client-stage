@@ -3,13 +3,7 @@ import React, {useState} from 'react';
 import {Link, Route, Switch, useRouteMatch, useHistory} from "react-router-dom";
 import Appointments from "./ListAppointments/Appointments";
 import Layout, {Content, Footer} from "antd/lib/layout/layout";
-import Sider from "antd/lib/layout/Sider";
-import {Menu} from "antd";
-import {
-    DesktopOutlined,
-    PieChartOutlined,
-    FileOutlined
-} from '@ant-design/icons';
+
 import Settings from "./Settings/Settings";
 import BookAppointment from "../../Appointment/BookAppointment";
 
@@ -20,7 +14,7 @@ function DoctorDashboard(myp) {
 
     const [count, setCount] = useState(true);
     let history = useHistory();
-    const [collapsed, setCollapsed] = useState(false)
+    // const [collapsed, setCollapsed] = useState(false)
 
 
     if (localStorage.getItem('accessToken') !== null) {
@@ -33,36 +27,81 @@ function DoctorDashboard(myp) {
         }
 
 
-        const onCollapse = collapsed => {
-            console.log(collapsed);
-            setCollapsed(true);
-        };
+
+
         return (
-            <Layout style={{minHeight: '100vh'}}>
-                <Sider collapsible collapsed={collapsed} onCollapse={onCollapse} style={{
-                    overflow: 'auto',
-                    height: '100vh',
-                    position: 'fixed',
-                    left: 0,
-                }}>
-                    <div className="logo"/>
-                    <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
+            <div>
+                <div className="nav">
+                    <nav className="nav__container">
+                        <div>
+                            <Link  className="nav__link nav__logo">
+                                <i className='bx bxs-disc nav__icon' />
+                                <span className="nav__logo-name">Bedimcode</span>
+                            </Link>
 
-                        <Menu.Item key="1" icon={<DesktopOutlined/>}>
-                            <Link to={`${url}/dashboard`}>Dashboard</Link>
-                        </Menu.Item>
-                        <Menu.Item key="2" icon={<PieChartOutlined/>}>
-                            <Link to={`${url}/appointment`}>Appointments</Link>
-                        </Menu.Item>
-                        <Menu.Item key="3" icon={<DesktopOutlined/>}>
-                            <Link to={`${url}/settings`}>Settings</Link>
-                        </Menu.Item>
+                            <div className="nav__list">
+                                <div className="nav__items">
+                                    <h3 className="nav__subtitle">Profile</h3>
 
-                        <Menu.Item key="9" icon={<FileOutlined/>}>
-                            Files
-                        </Menu.Item>
-                    </Menu>
-                </Sider>
+                                    <Link href="#" className="nav__link active">
+                                        <i className='bx bx-home nav__icon' />
+                                        <span className="nav__name">Home</span>
+                                    </Link>
+
+                                    <div className="nav__dropdown">
+                                        <Link href="#" className="nav__link">
+                                            <i className='bx bx-user nav__icon' />
+                                            <span className="nav__name">Profile</span>
+                                            <i className='bx bx-chevron-down nav__icon nav__dropdown-icon'/>
+                                        </Link>
+
+                                        <div className="nav__dropdown-collapse">
+                                            <div className="nav__dropdown-content">
+                                                <Link href="#" className="nav__dropdown-item">Passwords</Link>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <Link href="#" className="nav__link">
+                                        <i className='bx bx-message-rounded nav__icon' />
+                                        <span className="nav__name">Messages</span>
+                                    </Link>
+                                </div>
+
+                                <div className="nav__items">
+                                    <h3 className="nav__subtitle">Menu</h3>
+
+                                    <div className="nav__dropdown">
+                                        <Link href="#" className="nav__link">
+                                            <i className='bx bx-bell nav__icon' />
+                                            <span className="nav__name">Notifications</span>
+                                            <i className='bx bx-chevron-down nav__icon nav__dropdown-icon'/>
+                                        </Link>
+
+                                        <div className="nav__dropdown-collapse">
+                                            <div className="nav__dropdown-content">
+                                                <Link href="#" class="nav__dropdown-item">Blocked</Link>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+                                    <Link href="#" className="nav__link">
+                                        <i className='bx bx-bookmark nav__icon' />
+                                        <span className="nav__name">Saved</span>
+                                    </Link>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </nav>
+                </div>
+
+
                 <Layout className="site-layout">
                     <Content style={{margin: '0 16px'}}>
 
@@ -80,7 +119,7 @@ function DoctorDashboard(myp) {
                     </Content>
                     <Footer style={{textAlign: 'center'}}> Warecares ©2021 </Footer>
                 </Layout>
-            </Layout>
+            </div>
         );
 
     } else {
