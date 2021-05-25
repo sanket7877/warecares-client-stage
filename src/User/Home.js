@@ -7,7 +7,6 @@ import {Button, Card, Modal, Skeleton, Spin} from "antd";
 import {getAllDoctors, getDoctorById} from "../service/ApiService";
 import Book from "../Appointment/Book";
 
-
 function Home() {
     let {path} = useRouteMatch();
 
@@ -69,9 +68,7 @@ function Home() {
         }, [])
 
         return (
-
             <div>
-
                 {mu}
                 <Switch>
                     <Route path={`${path}/bookAppointment`}>
@@ -82,9 +79,10 @@ function Home() {
                     doctor.map(
                         doctor =>
                             <Card
+                                key={doctor.did}
                                 hoverable
                                 style={{width: 300}}>
-                                <p><h1>{doctor.firstname}</h1></p>
+                                <p>{doctor.firstname}</p>
                                 <p>{doctor.username}</p>
                                 <p>{doctor.speciality}</p>
                                 <p>Doctor's Status</p>
@@ -92,19 +90,14 @@ function Home() {
                             </Card>
                     )
                 }
-                <Modal title="Basic Modal" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
-                    <Skeleton loading={myLoad} active avatar>
 
-                    <p>Dr. {myD}</p>
+                <Modal title="Basic Modal" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+                    <Skeleton loading={myLoad} active >
+                    <h1>Dr. {myD} Welcome to the Street.</h1>
                     <Book />
                 </Skeleton>
-
                 </Modal>
-
             </div>
         );
 }
-
 export default Home;
-
-

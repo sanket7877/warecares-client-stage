@@ -1,17 +1,25 @@
 import React, {useState} from 'react';
 
 import {Link, Route, Switch, useRouteMatch, useHistory} from "react-router-dom";
-import Appointments from "./ListAppointments/Appointments";
 import Layout, {Content, Footer} from "antd/lib/layout/layout";
 
-import Settings from "./Settings/Settings";
-import BookAppointment from "../../Appointment/BookAppointment";
+import {
+    DesktopOutlined,
+    PieChartOutlined,
+    FileOutlined,
+    TeamOutlined,
+    UserOutlined,
+} from '@ant-design/icons';
+import Sider from "antd/es/layout/Sider";
+import {Menu} from "antd";
+import SubMenu from "antd/es/menu/SubMenu";
 
 
 
 function DoctorDashboard(myp) {
     let {path, url} = useRouteMatch();
 
+    const[collapsed,setCollapsed]=useState(false);
     const [count, setCount] = useState(true);
     let history = useHistory();
     // const [collapsed, setCollapsed] = useState(false)
@@ -26,100 +34,53 @@ function DoctorDashboard(myp) {
             setCount(false);
         }
 
-
-
-
+       function onCollapse (collapsed) {
+            console.log(collapsed);
+            setCollapsed( collapsed );
+        };
         return (
-            <div>
-                <div className="nav">
-                    <nav className="nav__container">
-                        <div>
-                            <Link  className="nav__link nav__logo">
-                                <i className='bx bxs-disc nav__icon' />
-                                <span className="nav__logo-name">Bedimcode</span>
-                            </Link>
-
-                            <div className="nav__list">
-                                <div className="nav__items">
-                                    <h3 className="nav__subtitle">Profile</h3>
-
-                                    <Link href="#" className="nav__link active">
-                                        <i className='bx bx-home nav__icon' />
-                                        <span className="nav__name">Home</span>
-                                    </Link>
-
-                                    <div className="nav__dropdown">
-                                        <Link href="#" className="nav__link">
-                                            <i className='bx bx-user nav__icon' />
-                                            <span className="nav__name">Profile</span>
-                                            <i className='bx bx-chevron-down nav__icon nav__dropdown-icon'/>
-                                        </Link>
-
-                                        <div className="nav__dropdown-collapse">
-                                            <div className="nav__dropdown-content">
-                                                <Link href="#" className="nav__dropdown-item">Passwords</Link>
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <Link href="#" className="nav__link">
-                                        <i className='bx bx-message-rounded nav__icon' />
-                                        <span className="nav__name">Messages</span>
-                                    </Link>
-                                </div>
-
-                                <div className="nav__items">
-                                    <h3 className="nav__subtitle">Menu</h3>
-
-                                    <div className="nav__dropdown">
-                                        <Link href="#" className="nav__link">
-                                            <i className='bx bx-bell nav__icon' />
-                                            <span className="nav__name">Notifications</span>
-                                            <i className='bx bx-chevron-down nav__icon nav__dropdown-icon'/>
-                                        </Link>
-
-                                        <div className="nav__dropdown-collapse">
-                                            <div className="nav__dropdown-content">
-                                                <Link href="#" class="nav__dropdown-item">Blocked</Link>
-
-                                            </div>
-                                        </div>
-
-                                    </div>
+            <Layout  style={{ minHeight: '100vh' }}>
+                <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
+                    <div className="logo" />
+                    <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
+                        <Menu.Item key="1" icon={<PieChartOutlined />}>
+                            Option 1
+                        </Menu.Item>
+                        <Menu.Item key="2" icon={<DesktopOutlined />}>
+                            Option 2
+                        </Menu.Item>
+                        <SubMenu key="sub1" icon={<UserOutlined />} title="User">
+                            <Menu.Item key="3">Tom</Menu.Item>
+                            <Menu.Item key="4">Bill</Menu.Item>
+                            <Menu.Item key="5">Alex</Menu.Item>
+                        </SubMenu>
+                        <SubMenu key="sub2" icon={<TeamOutlined />} title="Team">
+                            <Menu.Item key="6">Team 1</Menu.Item>
+                            <Menu.Item key="8">Team 2</Menu.Item>
+                        </SubMenu>
+                        <Menu.Item key="9" icon={<FileOutlined />}>
+                            Files
+                        </Menu.Item>
+                    </Menu>
+                </Sider>
 
 
-                                    <Link href="#" className="nav__link">
-                                        <i className='bx bx-bookmark nav__icon' />
-                                        <span className="nav__name">Saved</span>
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
+                {/*<Layout className="site-layout">*/}
+                {/*    <Content style={{margin: '0 16px'}}>*/}
 
+                {/*        <div style={{padding: 24, textAlign: 'center', backgroundColor: 'white'}}>*/}
 
-                    </nav>
-                </div>
-
-
-                <Layout className="site-layout">
-                    <Content style={{margin: '0 16px'}}>
-
-                        <div style={{padding: 24, textAlign: 'center', backgroundColor: 'white'}}>
-
-                            <Switch>
-
-                                <Route path={`${path}/dashboard`}><BookAppointment/></Route>
-
-                                <Route path={`${path}/appointment`}><Appointments/></Route>
-                                <Route path={`${path}/settings`}><Settings/></Route>
-                                <Route path={`${path}/`}><BookAppointment/></Route>
-                            </Switch>
-                        </div>
-                    </Content>
-                    <Footer style={{textAlign: 'center'}}> Warecares ©2021 </Footer>
-                </Layout>
-            </div>
+                {/*            <Switch>*/}
+                {/*                <Route path={`${path}/dashboard`}><BookAppointment/></Route>*/}
+                {/*                <Route path={`${path}/appointment`}><Appointments/></Route>*/}
+                {/*                <Route path={`${path}/settings`}><Settings/></Route>*/}
+                {/*                <Route path={`${path}/`}><BookAppointment/></Route>*/}
+                {/*            </Switch>*/}
+                {/*        </div>*/}
+                {/*    </Content>*/}
+                {/*    <Footer style={{textAlign: 'center'}}> Warecares ©2021 </Footer>*/}
+                {/*</Layout>*/}
+            </Layout>
         );
 
     } else {
