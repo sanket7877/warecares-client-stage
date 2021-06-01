@@ -75,21 +75,21 @@ function Home() {
                         <BookAppointment/>
                     </Route>
                 </Switch>
-                {
-                    doctor.map(
-                        doctor =>
-                            <Card
-                                key={doctor.did}
-                                hoverable
-                                style={{width: 300}}>
-                                <p>{doctor.firstname}</p>
-                                <p>{doctor.username}</p>
-                                <p>{doctor.speciality}</p>
-                                <p>Doctor's Status</p>
-                                <Button onClick={()=>{bookAppointment(doctor.did);showModal() }}>Book Your Appointment</Button>
-                            </Card>
-                    )
-                }
+                {/*{*/}
+                {/*    doctor.map(*/}
+                {/*        doctor =>*/}
+                {/*            <Card*/}
+                {/*                key={doctor.did}*/}
+                {/*                hoverable*/}
+                {/*                style={{width: 300}}>*/}
+                {/*                <p>{doctor.firstname}</p>*/}
+                {/*                <p>{doctor.username}</p>*/}
+                {/*                <p>{doctor.speciality}</p>*/}
+                {/*                <p>Doctor's Status</p>*/}
+                {/*                <Button onClick={()=>{bookAppointment(doctor.did);showModal() }}>Book Your Appointment</Button>*/}
+                {/*            </Card>*/}
+                {/*    )*/}
+                {/*}*/}
 
                 <Modal title="Basic Modal" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
                     <Skeleton loading={myLoad} active >

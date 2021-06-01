@@ -15,6 +15,7 @@ import {getCurrentUser} from "./service/ApiService";
 import DoctorDashboard from "./User/DoctorDashboard/DoctorDashboard";
 import Appointments from "./User/DoctorDashboard/ListAppointments/Appointments";
 
+
 export const ACCESS_TOKEN = 'accessToken';
 const {Content} = Layout;
 
@@ -135,8 +136,6 @@ class App extends React.Component {
                     </Switch>
                 </Content>
             </Layout>
-
-
         );
     }
 }

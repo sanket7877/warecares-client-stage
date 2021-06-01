@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 import {Link, Route, Switch, useRouteMatch, useHistory} from "react-router-dom";
 import Layout, {Content, Footer} from "antd/lib/layout/layout";
-
+import Appointments from "./ListAppointments/Appointments";
+import Settings from "./Settings/Settings";
 import {
     DesktopOutlined,
     PieChartOutlined,
@@ -13,24 +14,32 @@ import {
 import Sider from "antd/es/layout/Sider";
 import {Menu} from "antd";
 import SubMenu from "antd/es/menu/SubMenu";
+import {getCurrentUser} from "../../service/ApiService";
 
 
 
 function DoctorDashboard(myp) {
     let {path, url} = useRouteMatch();
 
-    const[collapsed,setCollapsed]=useState(false);
+    const[collapsed,setCollapsed]=useState(true);
     const [count, setCount] = useState(true);
+    const [doctorName,setDoctorName]=useState("");
     let history = useHistory();
     // const [collapsed, setCollapsed] = useState(false)
 
 
-    if (localStorage.getItem('accessToken') !== null) {
+    useEffect(()=>{
+        getCurrentUser().then(res=>{
+            setDoctorName(res.name)
+        })
+    })
 
-        console.log("called");
+    if (localStorage.getItem('accessToken') !== null) {
+              console.log("called");
         if (count !== false) {
 
             myp.onDone();
+            // console.log(myp);
             setCount(false);
         }
 
@@ -40,51 +49,51 @@ function DoctorDashboard(myp) {
         };
         return (
             <Layout  style={{ minHeight: '100vh' }}>
-                <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
+                <Sider  style={{
+                    overflow: 'auto',
+                    height: '100vh',
+                    position: 'fixed',
+                    left: 0,
+                }} collapsible collapsed={collapsed} onCollapse={onCollapse}>
                     <div className="logo" />
                     <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-                        <Menu.Item key="1" icon={<PieChartOutlined />}>
-                            Option 1
+                        <Menu.Item key="1" icon={<TeamOutlined />}>
+                            <Link to={`${url}/appointments`}>Appointments</Link>
                         </Menu.Item>
                         <Menu.Item key="2" icon={<DesktopOutlined />}>
-                            Option 2
+                            <Link to={`${url}/settings`}>settings</Link>
                         </Menu.Item>
                         <SubMenu key="sub1" icon={<UserOutlined />} title="User">
-                            <Menu.Item key="3">Tom</Menu.Item>
-                            <Menu.Item key="4">Bill</Menu.Item>
-                            <Menu.Item key="5">Alex</Menu.Item>
+                            <Menu.Item icon={<UserOutlined />} key="3">{doctorName}</Menu.Item>
+                            <Menu.Item icon={<UserOutlined />} key="4">Bill</Menu.Item>
+                            <Menu.Item icon={<UserOutlined />} key="5">Alex</Menu.Item>
                         </SubMenu>
-                        <SubMenu key="sub2" icon={<TeamOutlined />} title="Team">
-                            <Menu.Item key="6">Team 1</Menu.Item>
-                            <Menu.Item key="8">Team 2</Menu.Item>
-                        </SubMenu>
-                        <Menu.Item key="9" icon={<FileOutlined />}>
-                            Files
-                        </Menu.Item>
+
                     </Menu>
                 </Sider>
 
 
-                {/*<Layout className="site-layout">*/}
-                {/*    <Content style={{margin: '0 16px'}}>*/}
+                <Layout className="site-layout">
+                    <Content style={{margin: '0 16px'}}>
 
-                {/*        <div style={{padding: 24, textAlign: 'center', backgroundColor: 'white'}}>*/}
+                        <div style={{padding: 24, textAlign: 'center', backgroundColor: 'white'}}>
 
-                {/*            <Switch>*/}
-                {/*                <Route path={`${path}/dashboard`}><BookAppointment/></Route>*/}
-                {/*                <Route path={`${path}/appointment`}><Appointments/></Route>*/}
-                {/*                <Route path={`${path}/settings`}><Settings/></Route>*/}
-                {/*                <Route path={`${path}/`}><BookAppointment/></Route>*/}
-                {/*            </Switch>*/}
-                {/*        </div>*/}
-                {/*    </Content>*/}
-                {/*    <Footer style={{textAlign: 'center'}}> Warecares ©2021 </Footer>*/}
-                {/*</Layout>*/}
+                            <Switch>
+
+                                <Route path={`${path}/appointments`}><Appointments/></Route>
+                                <Route path={`${path}/settings`}><Settings/></Route>
+
+                                <Route path={`${path}/`}><Appointments  /></Route>
+                            </Switch>
+                        </div>
+                    </Content>
+                    <Footer style={{textAlign: 'center'}}> Warecares ©2021 </Footer>
+                </Layout>
             </Layout>
         );
 
-    } else {
-
+    } else
+    {
         history.push("/");
         return (
             <div>
@@ -92,7 +101,6 @@ function DoctorDashboard(myp) {
             </div>
         );
     }
-
 }
 
 export default DoctorDashboard;

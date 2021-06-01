@@ -67,6 +67,13 @@ export function getAllAppointments() {
         method: 'GET',
     });
 }
+export function getAppointmentsByDoctorId(id) {
+
+    return request({
+        url: API_BASE_URL + "/appointment/listappointmentRequest/"+id,
+        method: 'GET',
+    });
+}
 export function getAllDoctors() {
 
     return request({

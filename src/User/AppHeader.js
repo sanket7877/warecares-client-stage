@@ -8,7 +8,6 @@ import logo from "./cover.png";
 
 class AppHeader extends React.Component{
 
-
     constructor(props) {
         super(props);
         this.handleMenuClick=this.handleMenuClick.bind(this);
@@ -40,15 +39,14 @@ class AppHeader extends React.Component{
 
         return (
            <Header className="app-mheader">
-                <div>
-                    <div>
+
+               <div>
+                   <div>
                              <img className="logo-image"  src={logo} alt="logo" />
-                    </div>
-                    <Menu mode="horizontal" onClick={this.handleMenuClick} selectedKeys={[this.props.location.pathname]}  style={{ lineHeight: '64px' }} >
-
-                            {menuItems}
-
-                    </Menu>
+                   </div>
+                   <Menu mode="horizontal" onClick={this.handleMenuClick} selectedKeys={[this.props.location.pathname]}  style={{ lineHeight: '64px' }} >
+                        {menuItems}
+                   </Menu>
                 </div>
             </Header>
 
@@ -57,7 +55,7 @@ class AppHeader extends React.Component{
 }
 
 
- export default withRouter(AppHeader);
+export default withRouter(AppHeader);
 
 
 
