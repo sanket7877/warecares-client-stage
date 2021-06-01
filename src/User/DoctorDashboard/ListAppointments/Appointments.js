@@ -1,24 +1,35 @@
 import React  from "react";
-import {getAllAppointments} from "../../../service/ApiService";
+import {getAppointmentsByDoctorId, getCurrentUser} from "../../../service/ApiService";
 import {Button, notification, Table} from "antd";
 import "./Appointment.css"
 class Appointments extends React.Component{
 
-    constructor(props) {
+   constructor(props) {
         super(props);
         this.state= {
-            data: []
+            data: [],
+            doctorName:'',
+            doctorId:''
         }
         this.loadAllAppointments=this.loadAllAppointments.bind(this);
         this.onDelete=this.onDelete.bind(this);
         this.formatDateTime=this.formatDateTime.bind(this);
+        this.getCurrentUser=this.getCurrentUser.bind(this);
     }
+
+
     componentDidMount() {
-
                  this.loadAllAppointments();
-
+                this.getCurrentUser();
         // setInterval(this.loadAllAppointments, 5000);
     }
+
+    getCurrentUser=()=>{
+        getCurrentUser().then(res=>{
+                this.setState({doctorName:res.name,doctorId:res.id})
+        })
+    }
+
 
     formatDateTime(dateTimeString) {
         const date = new Date(dateTimeString);
@@ -70,30 +81,27 @@ class Appointments extends React.Component{
     }
 
     loadAllAppointments(){
-
-        getAllAppointments().then(res=>{
-
-            const  result=res.map(row=>(
-                    {
-                        key:row.ap_id,
-                        firstname:row.firstname,
-                        lastname:row.lastname,
-                        gender:row.gender,
-                        description:row.description,
-                        state:row.state,
-                        dob:row.dob,
-                        ap_Date:this.formatDateTime(row.ap_date)
-                    }
-                )
-            )
-            this.setState({data:result});
-
-
-
-        }).catch(error=>{
-            notification.error(error);
-        });
-
+       getCurrentUser().then(re=>{
+           getAppointmentsByDoctorId(re.id).then(res=>{
+               console.log(this.state.doctorId)
+               const  result=res.map(row=>(
+                       {
+                           key:row.ap_id,
+                           firstname:row.firstname,
+                           lastname:row.lastname,
+                           gender:row.gender,
+                           description:row.description,
+                           state:row.state,
+                           dob:row.dob,
+                           ap_Date:this.formatDateTime(row.ap_date)
+                       }
+                   )
+               )
+               this.setState({data:result});
+           }).catch(error=>{
+               notification.error(error);
+           });
+       })
     }
 
     columns = [
@@ -151,9 +159,16 @@ class Appointments extends React.Component{
             key: 'action',
             render: (_, record) =>
                 this.state.data.length >= 1 ? (
-                    <Button  onClick={() => this.onDelete(record.key)}>
-                        Delete
+
+                   <div>
+                       <Button  danger onClick={() => this.onDelete(record.key)}>
+                        Reject
+                        </Button>
+
+                    <Button type="primary" onClick={() => this.onDelete(record.key)}>
+                        Confirm
                     </Button>
+                   </div>
                 ) : null,
         },
     ]
@@ -168,7 +183,6 @@ class Appointments extends React.Component{
                     <div className="table-container">
                         <Table columns={this.columns} dataSource={this.state.data}/>
                     </div>
-
                 </h1>
             </div>
         );
