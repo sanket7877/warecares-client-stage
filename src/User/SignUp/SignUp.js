@@ -14,7 +14,7 @@ class SignUp extends React.Component{
                             <div className="signup-container">
                                 <div>
                                     <Link to="/userRegistration">
-                                        <Button  className="button" >Register Yourself as user</Button>
+                                        <Button className="button" >Register Yourself as user</Button>
                                     </Link>
                                 </div>
                             </div>
