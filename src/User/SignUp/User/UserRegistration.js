@@ -8,16 +8,13 @@ class UserRegistration extends React.Component{
 
     constructor(props) {
         super(props);
-
-        this.state={
+         this.state={
             loading:false
         }
     }
-
     createUser=(value:any)=>
     {
-
-        this.setState({loading:true})
+       this.setState({loading:true})
             signup(value).then(response=>{
                 this.setState({loading:false})
                message.success("Registration is Successful");
@@ -32,8 +29,7 @@ class UserRegistration extends React.Component{
 
     render() {
         return (
-
-            <div className="signup-container">
+           <div className="signup-container">
                 <Spin size="large" spinning={this.state.loading}>
                 <h1>User Registration </h1>
 
@@ -58,14 +54,11 @@ class UserRegistration extends React.Component{
                     </Form.Item>
 
                     <Form.Item name="gender" label="select Gender" rules={[{required:true}]}  >
-
-                        <Radio.Group >
+                    <Radio.Group >
                             <Radio value={'male'}>Male</Radio>
                             <Radio value={'female'}>Female</Radio>
                         </Radio.Group>
                     </Form.Item>
-
-
                     <Form.Item name="email" rules={[{required:true}]}  >
                         <Input type="email"  size="large" placeholder="email" name="email"        />
                     </Form.Item>
@@ -73,10 +66,8 @@ class UserRegistration extends React.Component{
                         <Button  size="large"  className="signup-form-button" type="primary" htmlType="submit">Register</Button>
                     </Form.Item>
                 </Form>
-
-                </Spin>
-
-                  </div>
+                    </Spin>
+                </div>
         );
     }
 }

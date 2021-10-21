@@ -1,21 +1,21 @@
 import React, {useEffect, useState} from 'react';
-import BookAppointment from "../Appointment/BookAppointment"
 import "./Home.css"
 import {Link, Route, Switch, useRouteMatch} from "react-router-dom";
 import {Button, Card, Modal, Skeleton, Spin} from "antd";
 
 import {getAllDoctors, getDoctorById} from "../service/ApiService";
 import Book from "../Appointment/Book";
+import SearchDoctor from "../Appointment/SearchDoctor";
+import {Footer} from "antd/lib/layout/layout";
 
 function Home() {
-    let {path} = useRouteMatch();
+    let {url,path} = useRouteMatch();
 
     const [loading, setLoading] = useState(false);
 
     const load = () => {
         setLoading(true);
     }
-
 
     let mu;
     // console.log(loading)
@@ -57,24 +57,21 @@ function Home() {
                     setLoad(false);
                 })
          }
-     const [doctor, setDoctor] = useState([]);
+        const [doctor, setDoctor] = useState([]);
         useEffect(() => {
             console.log("called ")
-            document.title = "Home page"
+            document.title="Home page"
             getAllDoctors().then(response => {
                 setDoctor(response)
-
-            })
+             })
         }, [])
 
         return (
             <div>
                 {mu}
                 <Switch>
-                    <Route path={`${path}/bookAppointment`}>
-                        <BookAppointment/>
-                    </Route>
-                </Switch>
+                    <Route path={`${path}/bookAppointment`} ><SearchDoctor/></Route>
+               </Switch>
                 {/*{*/}
                 {/*    doctor.map(*/}
                 {/*        doctor =>*/}
@@ -90,13 +87,20 @@ function Home() {
                 {/*            </Card>*/}
                 {/*    )*/}
                 {/*}*/}
+                    <Modal title="Basic Modal" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+                        <Skeleton loading={myLoad} active >
+                        <h1>Dr. {myD} Welcome to the Street.</h1>
+                        <Book />
+                    </Skeleton>
+                    </Modal>
 
-                <Modal title="Basic Modal" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
-                    <Skeleton loading={myLoad} active >
-                    <h1>Dr. {myD} Welcome to the Street.</h1>
-                    <Book />
-                </Skeleton>
-                </Modal>
+
+                <Footer style={{ textAlign: 'center' }}>
+
+                        <div>
+                            <h1> ©2021 Warecares Contact us : contact@warecares.live</h1>
+                        </div>
+                </Footer>
             </div>
         );
 }
