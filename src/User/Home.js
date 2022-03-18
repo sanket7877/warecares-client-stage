@@ -93,8 +93,6 @@ function Home() {
                         <Book />
                     </Skeleton>
                     </Modal>
-
-
                 <Footer style={{ textAlign: 'center' }}>
 
                         <div>
