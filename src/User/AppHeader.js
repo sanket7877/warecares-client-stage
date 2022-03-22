@@ -20,7 +20,7 @@ class AppHeader extends React.Component{
         }}
     render() {
 
-            let  menuItems;
+        let  menuItems;
               if(this.props.currentUser){
                   menuItems=[
                       <Menu.Item size="large" key="profile"  className="menu-item"><Link to="/profile" >profile</Link></Menu.Item>,
@@ -44,7 +44,14 @@ class AppHeader extends React.Component{
                    <div>
                              <img className="logo-image"  src={logo} alt="logo" />
                    </div>
-                   <Menu mode="horizontal" onClick={this.handleMenuClick} selectedKeys={[this.props.location.pathname]}  style={{ lineHeight: '64px' }} >
+                   <Menu  mode="horizontal" onClick={this.handleMenuClick} selectedKeys={[this.props.location.pathname]}  style={{
+                       xs: '480px',
+                       sm: '576px',
+                       md: '768px',
+                       lg: '992px',
+                       xl: '1200px',
+                       xxl: '1600px',
+                   lineHeight: '64px' }} >
                         {menuItems}
                    </Menu>
                 </div>

@@ -18,7 +18,6 @@ function Home() {
     }
 
     let mu;
-    // console.log(loading)
     if (loading === false) {
         mu = [
 
@@ -93,8 +92,6 @@ function Home() {
                         <Book />
                     </Skeleton>
                     </Modal>
-
-
                 <Footer style={{ textAlign: 'center' }}>
 
                         <div>
