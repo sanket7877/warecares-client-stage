@@ -1,4 +1,3 @@
-//export const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'https://warecares-stage.herokuapp.com/api';
  export const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://134.209.153.51:8080/api';
 export const ACCESS_TOKEN = 'accessToken';
 
@@ -31,7 +30,6 @@ export function login(loginRequest) {
 
 }
 export function signup(signupRequest) {
-    console.log("called :-",signupRequest);
     return request({
         url: API_BASE_URL + "/user/createuser",
         method: 'POST',
