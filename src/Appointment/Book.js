@@ -3,15 +3,10 @@ import {getDoctorById} from "../service/ApiService";
 
 function Book({myId}) {
 
-
     const [doctorData,setDoctorData]=useState([]);
-
-
     return(
         <div>
-            <
-                h1>Welcome to React world.</h1>
-
+             <h1>Welcome to React world.</h1>
         </div>
     );
 }
